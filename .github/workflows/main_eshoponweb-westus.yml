@@ -24,16 +24,16 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        run: dotnet build src/ApplicationCore/ApplicationCore.csproj --configuration Release
+        run: dotnet build eShopOnWeb.sln --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/ApplicationCore"
+        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/eShopOnWeb"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          path: ${{env.DOTNET_ROOT}}/eShopOnWeb
 
   deploy:
     runs-on: windows-latest
